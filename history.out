@@ -1,0 +1,224 @@
+    1  history 
+    2  ls
+    3  hostname mephi-2026.domain.local
+    4  hostname --help
+    5  sudo hostname mephi-2026.domain.local
+    6  hostname
+    7  s ip a
+    8  ip a
+    9  nmcli --help
+   10  nmcli c
+   11  nmcli con modify MTS_GPON_18F2 ipv4.method auto
+   12  nmcli c help
+   13  nmcli c show MTS_GPON_18F2 
+   14  ip a
+   15  ls
+   16  rm 2.* getcap.out history.out ./kill ./rm ./touch stat.out 
+   17  ls
+   18  ping 8.8.8.8
+   19  ping -c 4 8.8.8.8 > ping.out
+   20  less ping.out 
+   21  dnf --help
+   22  dnf update
+   23  sudo dnf update
+   24  sudo dnf install nginx
+   25  sudo dnf install libcap-ng-utils
+   26  dnf --help
+   27  ls /tmp
+   28  cd /tmp
+   29  sudo dnf download tcpdump
+   30  ls 
+   31  rpm --help
+   32  rpm -i tcpdump-4.99.5-1.red80.x86_64.rpm 
+   33  sudo rpm -i tcpdump-4.99.5-1.red80.x86_64.rpm 
+   34  dnf --help
+   35  dnf history dnf.out
+   36  dnf history > dnf.out
+   37  less dnf.out 
+   38  cd ~
+   39  lsblk
+   40  fdisk --help
+   41  sudo fdisk /dev/sdb
+   42  fdisk -l
+   43  sudo fdisk -l
+   44  mkfs --help
+   45  mkfs -t ext4 /dev/sdb
+   46  sudo mkfs -t ext4 /dev/sdb
+   47  sudo fdisk -l
+   48  lsblk
+   49  sudo parted --help
+   50  sudo parted /dev/sda mklabel --help
+   51  sudo parted /dev/sda
+   52  sudo parted /dev/sda mktable gpt mklabel ext4 
+   53  sudo parted /dev/sda print
+   54  sudo parted /dev/sda mklabel ext4 
+   55* sudo parted /dev/sda 
+   56  sudo parted /dev/sda print
+   57  sudo parted /dev/sda resizepart 1 2048
+   58  sudo parted /dev/sda print
+   59  sudo parted /dev/sda resizepart 1 30,8GB
+   60  sudo parted /dev/sda print
+   61  sudo less /etc/fstab 
+   62  partprobe /dev/sda
+   63  sudo partprobe /dev/sda
+   64  sudo partprobe --help
+   65  sudo less /etc/fstab 
+   66  parted --help
+   67  sudo parted /dev/sda rm 1
+   68  lsblk
+   69  sudo parted /dev/sda print
+   70  sudo parted /dev/sda mkpart primary 0% 100%
+   71  sudo parted /dev/sda print
+   72  sudo parted /dev/sda rm 1
+   73  sudo parted /dev/sda mkpart primary ext4 0% 100%
+   74  sudo parted /dev/sda print
+   75  lsblk
+   76  fdisk
+   77  fdisk --help
+   78  fdisk -l
+   79  sudo fdisk -l
+   80  sudo mkfs -t ext4 /dev/sda1
+   81  lsblk
+   82  lsblk -f
+   83  e2label /dev/sda1 MEPHI_WEB
+   84  sudo e2label /dev/sda1 MEPHI_WEB
+   85  lsblk -f
+   86  sudo mount --help
+   87  sudo mkdir /mephi-web
+   88  sudo mkfs.ext4 -L MEPHI_WEB /dev/sda1
+   89  lsblk -f
+   90  sudo blkid -s MEPHI_WEB /dev/sda1 --help
+   91  sudo blkid /dev/sda1
+   92  sudo nano /etc/fstab
+   93  sudo echo "LABEL=MEPHI_WEB /mephi-web ext4 deafults 0 2"
+   94  sudo echo "LABEL=MEPHI_WEB /mephi-web ext4 deafults 0 2" >> /etc/fstab 
+   95  sudo nano /etc/fstab
+   96  sudo mount -a
+   97  systemctl daemon-reload 
+   98  sudo mount -a
+   99  sudo nano /etc/fstab
+  100  sudo mount -a
+  101  sudo nano /etc/fstab
+  102  sudo mount -a
+  103  systemctl daemon-reload 
+  104  ls /mephi-web/
+  105  lsblk
+  106  df -h 
+  107  sudo systemctl status nginx.service 
+  108  sudo systemctl enable nginx.service 
+  109  sudo systemctl status nginx.service 
+  110  sudo systemctl start nginx.service 
+  111  sudo systemctl status nginx.service 
+  112  ip a
+  113  curl http://localhost
+  114  sudo journalctl --help
+  115  sudo journalctl -b -u nginx.service 
+  116  sudo journalctl -b -u nginx.service > journalctl.out
+  117  sudo mkdir /data/mephi-2026
+  118* 
+  119* mkdir --h
+  120  sudo mkdir /data/mephi-2026 -p
+  121  ls /
+  122  ls /data
+  123  cat journalctl.out 
+  124  sudo groupadd curators -g 4444
+  125  sudo grep curators /etc/group
+  126  sudo groupadd developers -g 5500
+  127  sudo grep develop /etc/group
+  128  sudo useradd --help
+  129  sudo useradd -G developers -u 5501 user1
+  130  sudo grep user1 /etc/passwd
+  131  sudo userdel --help
+  132  sudo userdel -r user1
+  133  sudo useradd -G developers -u 5501 user1
+  134  sudo useradd -G developers -u 5502 user2
+  135  sudo useradd -G developers -u 5503 user3
+  136  sudo grep user /etc/passwd
+  137  sudo grep user /etc/group
+  138  sudo useradd -G curators curator1
+  139  sudo useradd -G curators curator2
+  140  sudo grep cura /etc/group
+  141  sudo chown root:developers /data/mephi-2026/
+  142  sudo ls -lah /data/mephi-2026/
+  143  sudo stat /data/mephi-2026/
+  144  sudo chmod 2770 /data/mephi-2026/
+  145  sudo ls -lah /data/mephi-2026/
+  146  sudo setfacl --help
+  147  sudo setfacl -d -m g:curators:r-x
+  148  sudo setfacl -d -m g:curators:r-x /data/mephi-2026/
+  149  sudo -u user1 touch /data/mephi-2026/test.txt
+  150  ls /data/mephi-2026/ -lah
+  151  sudo ls /data/mephi-2026/ -lah
+  152  sudo -u user2 nano /data/mephi-2026/test.txt
+  153  sudo -u user3 cat /data/mephi-2026/test.txt
+  154  sudo -u curator1 nano /data/mephi-2026/test.txt
+  155  sudo -u curator1 cat /data/mephi-2026/test.txt
+  156  sudo getfacl /data/mephi-2026/
+  157  sudo getfacl /data/mephi-2026/test.txt
+  158  sudo grep curators /etc/group
+  159  sudo -u curator1 cat /data/mephi-2026/test.txt
+  160  sudo -u curator2 cat /data/mephi-2026/test.txt
+  161  sudo stat /data/mephi-2026/
+  162  sudo getfacl /data/mephi-2026/test.txt
+  163  sudo ls -lah /data
+  164  sudo getfacl /data/mephi-2026/
+  165  sudo getfacl /data/mephi-2026/test.txt
+  166  sudo getfacl /data/
+  167  sudo -curator1 less /data/mephi-2026/text.txt
+  168  sudo -u curator1 less /data/mephi-2026/text.txt
+  169  sudo setfacl -m g:curators:r-x /data/mephi-2026/
+  170  sudo -u curator1 less /data/mephi-2026/text.txt
+  171  sudo -u curator1 less /data/mephi-2026/test.txt
+  172  sudo -u user1 tcpdump
+  173  ls -lah /usr/sbin/tcpdump 
+  174  sudo getcap /usr/bin/sbin/tcpdump
+  175  sudo getcap /usr/sbin/tcpdump
+  176  sudo chmod u-s /usr/sbin/tcpdump 
+  177  ls -lah /usr/sbin/tcpdump 
+  178  sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump 
+  179  sudo getcap /usr/sbin/tcpdump
+  180  sudo -u user1 tcpdump
+  181  sestatus 
+  182  getenforce 
+  183  sestatus 
+  184  sudo ls -lah /mephi-web/
+  185  sudo nano /etc/nginx/nginx.conf
+  186  curl http://localhost -I
+  187  curl http://localhost/index.html -I
+  188  curl http://localhost/index.html
+  189  systemctl reload nginx.service 
+  190  curl http://localhost/index.html
+  191  curl http://localhost/
+  192  sudo semanage fcontext -a -t httpd_sys_content_t '/mephi-web(/.*)?'
+  193  ls -la /mephi-web/
+  194  restorecon -Rv /mephi-web/
+  195  sudo restorecon -Rv /mephi-web/
+  196  usermod --help
+  197  usermod -s /usr/sbin/nologin curator1
+  198  sudo usermod -s /usr/sbin/nologin curator1
+  199  sudo usermod -s /usr/sbin/nologin curator2
+  200  sudo cat /etc/passwd
+  201  ls /usr/sbin/
+  202  ls /usr/sbin/nologin 
+  203  sed --help
+  204  cat /etc/security/pwquality.conf
+  205  sudo nano /etc/security/pwquality.conf
+  206  sudo chage -M 90 user1 user2
+  207  sudo chage -M 90 user1
+  208  sudo chage -M 90 user2
+  209  sudo chage -M 90 user3
+  210  sudo chage -M 90 curator1
+  211  sudo chage -M 90 curator2
+  212  sudo passwd user1
+  213  sudo passwd user2
+  214  less /etc/shadow
+  215  sudo less /etc/shadow
+  216  sudo passwd user3
+  217  sudo passwd curator1
+  218  sudo passwd curator2
+  219  sudo less /etc/shadow
+  220  nano /mephi-web/index.html
+  221  sudo nano /mephi-web/index.html
+  222  curl http://localhost/index.html
+  223  curl http://localhost/
+  224  history > ./history.out
